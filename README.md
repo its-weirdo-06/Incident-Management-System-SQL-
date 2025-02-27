@@ -17,6 +17,7 @@ Develop a comprehensive Incident Management System to track, manage, and resolve
 ### Script :
 
 -- Create table for support engineers
+
 CREATE TABLE support_engineers (
 engineer_id INT IDENTITY(1,1) PRIMARY KEY,
 engineer_name VARCHAR(50) NOT NULL,
@@ -24,12 +25,14 @@ email VARCHAR(50) NOT NULL
 );
 
 -- Create table for incident status
+
 CREATE TABLE incident_status (
 status_id INT IDENTITY(1,1) PRIMARY KEY,
 status_name VARCHAR(20) NOT NULL
 );
 
 -- Create table for incidents
+
 CREATE TABLE incidents (
 incident_id INT IDENTITY(1,1) PRIMARY KEY,
 incident_description TEXT NOT NULL,
@@ -43,6 +46,7 @@ FOREIGN KEY (assigned_to) REFERENCES support_engineers(engineer_id)
 );
 
 -- Create table for incident logs
+
 CREATE TABLE incident_logs (
 log_id INT IDENTITY(1,1) PRIMARY KEY,
 incident_id INT NOT NULL,
@@ -52,6 +56,7 @@ FOREIGN KEY (incident_id) REFERENCES incidents(incident_id)
 );
 
 -- Sample query to generate a report of incidents by severity level
+
 SELECT severity_level, COUNT(*) AS incident_count
 FROM incidents
 GROUP BY severity_level;
